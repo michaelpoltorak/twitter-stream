@@ -8,10 +8,11 @@ var io = require('socket.io')(server);
 var T = require('twit');
 var q = "rain";
 var twit = new T({
-    consumer_key: 'O3cpdFftDrcS8ziaOdybnuqvd',
-    consumer_secret: 'BDGOiX8b5DdEAxYHmdvJa8hCjUS5obhQ6qZuvAeloyOygLNSsF',
-    access_token: '2990098401-LQJLJbVUWDjA2wgBn2vMriXx2QkN7lIVO3wrjTg',
-    access_token_secret: '5B6mcL4cL5KMSANgzGiLUhWudnIDWCqX6Wq9n6rYxC0ki'
+    // Add own Twitter credentials here:
+    consumer_key: '',
+    consumer_secret: '',
+    access_token: '',
+    access_token_secret: ''
 });
 
 
