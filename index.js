@@ -6,7 +6,7 @@ var jade = require('jade');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 var T = require('twit');
-var q = "rain";
+var q = "twitter";
 var twit = new T({
     // Add own Twitter credentials here:
     consumer_key: '',
@@ -15,6 +15,7 @@ var twit = new T({
     access_token_secret: ''
 });
 
+//console.log('io ', io);
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
@@ -24,10 +25,11 @@ app.get('/page', function (req, res) {
     res.render('index', {type:req.query.type});
 });
 
-server.listen(3001, function () {
-    console.log('listening on *:3001');
+server.listen(3002, function () {
+    console.log('listening on *:3002');
 });
 io.on('connection', function (socket) {
+    console.log('connection ', socket);
     var stream;
     start();
     stream.on('tweet', function (tweet) {

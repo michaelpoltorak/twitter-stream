@@ -5,6 +5,7 @@ var socket = io(),
 
 
 function setup() {
+    console.log('type ', type);
     if(type === 'sunshine') {
         sunshine();
         //rain();
@@ -12,16 +13,19 @@ function setup() {
     if(type === 'rain') {
         rain();
     }
-}
-/*socket.on('query', function (q) {
-    var queryEl = document.getElementById("q");
-    queryEl.value = q;
-    queryEl.onblur = function() {
-        console.log("blur");
-        socket.emit("newquery", document.getElementById("q").value);
+    if(type === '') {
+        stream();
     }
-
-});*/
+}
+function stream() {
+    socket.on('tweet', function (tweet) {
+        console.log('tweet ', tweet.text);
+        
+        var el = document.getElementById('stream');
+        var old = el.innerHTML; 
+        el.innerHTML = '<div class="tweet">' + tweet.text + '</div>' + old; 
+    });
+}
 function rain() {
     console.log('draw rain');
     createCanvas(720, 400);
